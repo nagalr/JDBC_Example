@@ -48,6 +48,14 @@ public class App2 {
             List<Student> result = q.getResultList();
             System.out.println("\nStudent with last name 'Thompson' is: " + result + "\n");
 
+            // another query, find students with lastName='Doe' OR firstName='James'
+            Query<Student> q2 = session
+                                .createQuery("From Student s where s.lastName='Doe' " +
+                                        "OR s.firstName='James'", Student.class);
+
+            List<Student> result2 = q2.getResultList();
+            System.out.println(result2);
+
             // close the session that created two students in the DB
             session.close();
 
