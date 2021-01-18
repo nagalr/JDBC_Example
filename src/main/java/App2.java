@@ -46,7 +46,7 @@ public class App2 {
                                                 Student.class);
 
             List<Student> result = q.getResultList();
-            System.out.println("\nStudent with last name 'Thompson' is: " + result + "\n");
+            System.out.println(result);
 
             // Find students with lastName='Doe' OR firstName='James'
             Query<Student> q2 = session
@@ -58,7 +58,7 @@ public class App2 {
 
             // Find Students with contactNo end with '1255'
             Query<Student> q3 = session
-                                .createQuery("From Student s where contactNo " +
+                                .createQuery("From Student s where s.contactNo " +
                                                 "like '%1317'", Student.class);
 
             List<Student> result3 = q3.getResultList();
