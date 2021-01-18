@@ -18,12 +18,12 @@ public class HibernateUtil {
 
 //    private static SessionFactory buildSessionFactory() {
 //        try {
-//            return new Configuration().configure().buildSessionFactory();
+//            return new Configuration()
+//                    .configure("hibernate.cfg.xml")
+//                    .buildSessionFactory();
 //        } catch (Throwable ex) {
 //            System.err.println("build SessionFactory failed :" + ex);
 //            throw new ExceptionInInitializerError(ex);
-//        } finally {
-//            close();
 //        }
 //    }
 

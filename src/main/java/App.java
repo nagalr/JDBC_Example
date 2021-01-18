@@ -14,30 +14,35 @@ public class App {
 
     public static void main(String[] args) {
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
-        Student student = new Student();
-        student.setFirstName("John");
-        student.setLastName("Bloch");
-        student.setContactNo("+1-408-575-1317");
+            session.beginTransaction();
 
-        Student student2 = new Student();
-        student2.setFirstName("James");
-        student2.setLastName("Thompson");
-        student2.setContactNo("+1-416-575-1255");
+            Student student = new Student();
+            student.setFirstName("John");
+            student.setLastName("Bloch");
+            student.setContactNo("+1-408-575-1317");
 
-        session.save(student);
-        session.save(student2);
-        session.getTransaction().commit();
+            Student student2 = new Student();
+            student2.setFirstName("James");
+            student2.setLastName("Thompson");
+            student2.setContactNo("+1-416-575-1255");
 
-        Query<Student> q = session.createQuery("From Student", Student.class);
+            session.save(student);
+            session.save(student2);
+            session.getTransaction().commit();
 
-        List<Student> resultList = q.list();
-        System.out.println("total students: " + resultList.size());
+            Query<Student> q = session.createQuery("From Student", Student.class);
 
-        for (Student s : resultList) {
-            System.out.println("student : " + s);
+            List<Student> resultList = q.list();
+            System.out.println("total students: " + resultList.size());
+
+            for (Student s : resultList) {
+                System.out.println("student : " + s);
+            }
+
+        } catch (Exception e) {
+            System.out.println("[ERROR] error while opening the session: " + e);
         }
     }
 }
