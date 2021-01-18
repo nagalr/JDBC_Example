@@ -65,7 +65,7 @@ public class App {
             session2.beginTransaction();
 
             // retrieve student based on its ID
-            Student myStudent = session2.get(Student.class, student1.getStudentId());
+            Student myStudent = session2.get(Student.class, student1.getId());
 
             // prints the new student that retrieved from the DB
             System.out.println("\n************ New Student: *****\n" + myStudent);

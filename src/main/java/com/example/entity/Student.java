@@ -13,7 +13,7 @@ public class Student {
     @Id // 'GenerationType.IDENTITY' is the preferred way using MySql
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Column(name = "ID")
-    private Long studentId;
+    private Long Id;
 
     @Column(name = "FNAME", nullable = false)
     private String firstName;
@@ -33,12 +33,12 @@ public class Student {
         this.contactNo = contactNo;
     }
 
-    public Long getStudentId() {
-        return studentId;
+    public Long getId() {
+        return Id;
     }
 
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
+    public void setId(Long studentId) {
+        this.Id = studentId;
     }
 
     public String getFirstName() {
@@ -68,7 +68,7 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "studentId=" + studentId +
+                "Id=" + Id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", contactNo='" + contactNo + '\'' +
