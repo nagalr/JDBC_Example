@@ -27,6 +27,10 @@ public class HibernateUtil {
 //        }
 //    }
 
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
     private static SessionFactory buildSessionFactory() {
         try {
 
@@ -53,13 +57,8 @@ public class HibernateUtil {
         }
     }
 
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
     public static void close() {
         // Close all cached and active connection pools
         getSessionFactory().close();
     }
-
 }
