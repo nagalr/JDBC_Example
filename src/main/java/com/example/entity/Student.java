@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "STUDENT")
 public class Student {
 
-    @Id
+    @Id // 'GenerationType.IDENTITY' is the preferred way using MySql
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Column(name = "ID")
     private Long studentId;
