@@ -40,21 +40,29 @@ public class App2 {
             session.getTransaction().commit();
 
             // query a Student with last name 'Thompson'
-            // ('s' is an alias, 'lastName' from the Java code, not DB table name)
+            // ('s' is an alias, 'Student', 'lastName' from the Java code, not DB table name)
             Query<Student> q = session
-                    .createQuery("From Student s where s.lastName='Thompson'",
-                            Student.class);
+                               .createQuery("From Student s where s.lastName='Thompson'",
+                                                Student.class);
 
             List<Student> result = q.getResultList();
             System.out.println("\nStudent with last name 'Thompson' is: " + result + "\n");
 
-            // another query, find students with lastName='Doe' OR firstName='James'
+            // Find students with lastName='Doe' OR firstName='James'
             Query<Student> q2 = session
                                 .createQuery("From Student s where s.lastName='Doe' " +
-                                        "OR s.firstName='James'", Student.class);
+                                                 "OR s.firstName='James'", Student.class);
 
             List<Student> result2 = q2.getResultList();
             System.out.println(result2);
+
+            // Find Students with contactNo end with '1255'
+            Query<Student> q3 = session
+                                .createQuery("From Student s where contactNo " +
+                                                "like '%1317'", Student.class);
+
+            List<Student> result3 = q3.getResultList();
+            System.out.println(result3);
 
             // close the session that created two students in the DB
             session.close();
