@@ -16,6 +16,8 @@ public class HibernateUtil {
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
+//    // Another option to save an object to DB using definitions
+//    // in 'hibernate.cfg.xml'
 //    private static SessionFactory buildSessionFactory() {
 //        try {
 //            return new Configuration()
